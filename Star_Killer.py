@@ -3,6 +3,9 @@
 import sys
 import pygame
 
+from pygame.sprite import Group
+import game_functions as gmf
+
 from settings import Settings
 from ship import Ship
 
@@ -10,28 +13,23 @@ from ship import Ship
 def run_game():
     # Initalize pygame, defined settings, and the screen
     pygame.init
-    ai_settings = Settings()
+    conductor_settings = Settings()
     screen = pygame.display.set_mode(
-        (ai_settings.screen_width, ai_settings.screen_heigth)
+        (conductor_settings.screen_width, conductor_settings.screen_heigth)
     ) 
     pygame.display.set_caption("Star Killer")
 
     # Make PC Ship
-    star_killer = Ship(screen)
+    star_killer = Ship(conductor_settings, screen)
+    # Make projectile storage
+    projectiles = Group()
+
 
     # Game loop
     while True:
-
-        #Keyboard and mouse watcher
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        # Redraw the screen during each pass through the loop
-        screen.fill(ai_settings.bg_color)
-        star_killer.blitme()
-
-        # Make the most recently drawn screen visible
-        pygame.display.flip()
+            gmf.check_player_events(conductor_settings, screen, star_killer, projectiles)
+            star_killer.update()
+            projectiles.update()
+            gmf.update_screen(conductor_settings, screen, star_killer, projectiles)
 
 run_game()
