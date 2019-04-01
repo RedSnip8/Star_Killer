@@ -20,7 +20,36 @@ In Star Killer the player will control a ship on the right side of the screen. T
 
 
 ### System Requirements
-This code is meant to run on either Ubuntu 16.04 with Pygame and Python 3. 
+This code is meant to run on either Ubuntu 16.04 or Ubuntu 18.04 with Pygame 1.9.5 and Python 3.6.7. 
 
+#### Getting Python 3 and Pygame
+Start by updating the package list:
+```
+sudo apt-get update
+```
+
+Install Python 3
+```
+sudo apt-get install python3
+```
+
+Install pip3
+```
+sudo apt install python3-pip
+```
+
+Verify python3 and pip3 are installed with the correct versions
+```
+python3 --version && pip3 --version
+
+_sample output_
+Python 3.6.7
+pip 19.0.3 from /usr/local/lib/python3.6/dist-packages/pip (python 3.6)
+```
+
+Install Pygame
+```
+pip3 install --user pygame
+```
 
 ## <a name="how-to"></a>How to Play
