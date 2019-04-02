@@ -1,7 +1,7 @@
 import pygame
 
 class SpriteSheeter():
-    def__int__(self, filename, columns, rows)
+    def __int__(self, filename, columns, rows):
         self.sheet = pygame.image.load(filename).covert_alpha()
 
         self.columns = columns
@@ -26,8 +26,5 @@ class SpriteSheeter():
             (0, -height), (-hwidth, -height), (-width, -height),
         ])
 
-    def draw(self, surface, cellindex, x, y, handle = 0)
-        surface.blit(
-            self.sheet, (x + self.handle[handle][0],
-            y + self.handle[handle][1],
-            self.cells[cellindex])
+    def draw(self, surface, cellindex, x, y, handle = 0):
+        surface.blit( self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1], self.cells[cellindex])
