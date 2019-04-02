@@ -1,0 +1,7 @@
+__pycache__/
+bullets.pyc
+game_functions.pyc
+settings.pyc
+ship.pyc
+sprite_sheet.pyc
+test.ani.py
