@@ -61,8 +61,7 @@ def update_screen(conductor_settings, screen, star_killer, projectiles):
     # Redraw all projectiles behind enemy ships
     for laser in projectiles.sprites():
         laser.draw_laser()
-
-    star_killer.blitme()
+    star_killer.blitspri(screen, (star_killer.index % star_killer.totalCellCount), star_killer.rect)
 
     # Make the most recently drawn screen visible
     pygame.display.flip()

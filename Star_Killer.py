@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
-import sys
-import pygame
+import sys, pygame
 
 from pygame.sprite import Group
 import game_functions as gmf
@@ -17,10 +16,10 @@ def run_game():
     screen = pygame.display.set_mode(
         (conductor_settings.screen_width, conductor_settings.screen_heigth)
     ) 
-    pygame.display.set_caption("Star Killer")
+    pygame.display.set_caption("Star Killer- Redsnip8")
 
     # Make PC Ship
-    star_killer = Ship(conductor_settings, screen)
+    star_killer = Ship(conductor_settings, screen, "images/star-killer-ani.png", 8, 8)
     # Make projectile storage
     projectiles = Group()
 
@@ -30,6 +29,6 @@ def run_game():
         gmf.check_player_events(conductor_settings, screen, star_killer, projectiles)
         star_killer.update()
         gmf.update_projectiles(projectiles)
-        gmf.update_screen(conductor_settings, screen, star_killer, projectiles)
+        gmf.update_screen(conductor_settings, screen, star_killer, projectiles, )
 
 run_game()
