@@ -14,7 +14,8 @@ class Settings():
         self.ship_speed_factor = 1.5
 
         # Laser Settings
-        self.laser_speed_factor = 3
+        self.laser_speed_factor = 7
         self.laser_width = 20
         self.laser_height = 3
         self.laser_color = Color("#842bd7")
+        self.laser_limit = 6

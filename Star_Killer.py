@@ -27,9 +27,9 @@ def run_game():
 
     # Game loop
     while True:
-            gmf.check_player_events(conductor_settings, screen, star_killer, projectiles)
-            star_killer.update()
-            projectiles.update()
-            gmf.update_screen(conductor_settings, screen, star_killer, projectiles)
+        gmf.check_player_events(conductor_settings, screen, star_killer, projectiles)
+        star_killer.update()
+        gmf.update_projectiles(projectiles)
+        gmf.update_screen(conductor_settings, screen, star_killer, projectiles)
 
 run_game()

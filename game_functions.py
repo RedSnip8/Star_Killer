@@ -15,8 +15,9 @@ def check_keyDown(event, ai_settings, screen, player, projectiles):
         player.not_moving = False
     elif event.key == pygame.K_v:
         # Create a new laser and add it to the projectiles group
-        new_laser = Player_Laser(ai_settings, screen, player)
-        projectiles.add(new_laser)
+        if len(projectiles) < ai_settings.laser_limit:
+            new_laser = Player_Laser(ai_settings, screen, player)
+            projectiles.add(new_laser)
 
 
 def check_keyUp(event, player):
@@ -41,6 +42,17 @@ def check_player_events(ai_settings, screen, player, projectiles):
         elif event.type == pygame.KEYUP:
             check_keyUp(event, player)  
 
+
+def update_projectiles(projectiles):
+    """Update position of projectiles from player"""
+    # Update projectile positions
+    projectiles.update()
+
+     # Remove off screen projectiles from memory
+    for laser in projectiles.copy():
+        if laser.rect.right >= 1500:
+            projectiles.remove(laser)
+        print(len(projectiles))
 
 
 def update_screen(conductor_settings, screen, star_killer, projectiles):

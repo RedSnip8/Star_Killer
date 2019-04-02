@@ -1,13 +1,17 @@
 import pygame
+from pygame.sprite import Sprite
+from sprite_sheet import SpriteSheeter
 
-class Ship():
+
+class Ship(Sprite):
     def __init__(self, player_settings, screen):
         """Initialize the ship and it's starting position"""
+        super().__init__()
         self.screen = screen
         self.settings = player_settings
 
         # Load the ship image and get its rect
-        self.image = pygame.image.load('images/space_ship.png')
+        self.image = SpriteSheeter('images/star-killer-ani.png', 8, 8)
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
