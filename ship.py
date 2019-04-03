@@ -1,6 +1,5 @@
 import pygame
 from pygame.sprite import Sprite
-from sprite_sheet import SpriteSheeter
 
 
 class Ship(Sprite):
@@ -10,7 +9,7 @@ class Ship(Sprite):
             self.settings = player_settings
 
             # Load the ship image and set a square 64 pixle rectangle
-            self.sheet = pygame.image.load(filename).convert()
+            self.sheet = pygame.image.load(filename).convert_alpha()
             self.rect = pygame.Rect(0,0, 64, 64)
             
             # Assign variables for the spritesheet list builder
@@ -58,15 +57,17 @@ class Ship(Sprite):
         
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.center += self.settings.ship_speed_factor
-            self.index = 0
+            self.index = 32
 
         if self.moving_right and self.rect.right < 500 :
             self.centerX += self.settings.ship_speed_factor
             self.settings.ship_speed_factor = 2
+            self.index = 8
 
         if self.not_moving and self.rect.left > 0:
             self.centerX -= 1
             self.settings.ship_speed_factor = 1.5
+            self.index = 0
 
 
         self.rect.centery = self.center
