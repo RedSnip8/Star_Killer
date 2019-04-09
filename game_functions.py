@@ -21,6 +21,8 @@ def check_keyDown(event, ai_settings, screen, player, projectiles):
         player.not_moving = False
     elif event.key == pygame.K_v:
         fire_laser(ai_settings, screen, ship, projectiles)
+    elif event.key == pygame.k_q:
+        sys.exit()
 
 
 def check_keyUp(event, player):
