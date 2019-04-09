@@ -4,6 +4,12 @@ import pygame
 from bullets import Player_Laser
 
 
+def fire_laser(ai_setting, screen, ship, projectiles):
+     # Create a new laser and add it to the projectiles group
+    if len(projectiles) < ai_settings.laser_limit:
+        new_laser = Player_Laser(ai_settings, screen, player)
+         projectiles.add(new_laser)
+
 def check_keyDown(event, ai_settings, screen, player, projectiles):
     """Reactions to Key presses"""
     if event.key == pygame.K_UP:
@@ -14,10 +20,7 @@ def check_keyDown(event, ai_settings, screen, player, projectiles):
         player.moving_right = True
         player.not_moving = False
     elif event.key == pygame.K_v:
-        # Create a new laser and add it to the projectiles group
-        if len(projectiles) < ai_settings.laser_limit:
-            new_laser = Player_Laser(ai_settings, screen, player)
-            projectiles.add(new_laser)
+        fire_laser(ai_settings, screen, ship, projectiles)
 
 
 def check_keyUp(event, player):
