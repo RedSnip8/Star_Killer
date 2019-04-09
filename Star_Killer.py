@@ -7,6 +7,7 @@ import game_functions as gmf
 
 from settings import Settings
 from ship import Ship
+from enemies import Enemy
 
 
 def run_game():
@@ -23,12 +24,14 @@ def run_game():
     # Make projectile storage
     projectiles = Group()
 
+    # Make Enemy
+    enemy = Enemy(conductor_settings, screen)
 
     # Game loop
     while True:
         gmf.check_player_events(conductor_settings, screen, star_killer, projectiles)
         star_killer.update()
         gmf.update_projectiles(projectiles)
-        gmf.update_screen(conductor_settings, screen, star_killer, projectiles, )
+        gmf.update_screen(conductor_settings, screen, star_killer, enemy, projectiles)
 
 run_game()

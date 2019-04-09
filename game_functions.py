@@ -4,11 +4,11 @@ import pygame
 from bullets import Player_Laser
 
 
-def fire_laser(ai_setting, screen, ship, projectiles):
+def fire_laser(ai_settings, screen, player, projectiles):
      # Create a new laser and add it to the projectiles group
     if len(projectiles) < ai_settings.laser_limit:
         new_laser = Player_Laser(ai_settings, screen, player)
-         projectiles.add(new_laser)
+        projectiles.add(new_laser)
 
 def check_keyDown(event, ai_settings, screen, player, projectiles):
     """Reactions to Key presses"""
@@ -20,8 +20,8 @@ def check_keyDown(event, ai_settings, screen, player, projectiles):
         player.moving_right = True
         player.not_moving = False
     elif event.key == pygame.K_v:
-        fire_laser(ai_settings, screen, ship, projectiles)
-    elif event.key == pygame.k_q:
+        fire_laser(ai_settings, screen, player, projectiles)
+    elif event.key == pygame.K_q:
         sys.exit()
 
 
@@ -60,13 +60,14 @@ def update_projectiles(projectiles):
         print(len(projectiles))
 
 
-def update_screen(conductor_settings, screen, star_killer, projectiles):
+def update_screen(conductor_settings, screen, star_killer, enemy, projectiles):
     """Redraw the screen during each pass"""
     screen.fill(conductor_settings.bg_color)
     # Redraw all projectiles behind enemy ships
     for laser in projectiles.sprites():
         laser.draw_laser()
     star_killer.blitspri(screen, (star_killer.index % star_killer.totalCellCount), star_killer.rect)
+    enemy.blitspri(screen, (enemy.index % enemy.totalCellCount), enemy.rect)
 
     # Make the most recently drawn screen visible
     pygame.display.flip()
